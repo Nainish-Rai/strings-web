@@ -1,46 +1,24 @@
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable react-hooks/rules-of-hooks */
-import threadsAPI from "@/lib/apiclient";
-import { getCompleteUserDetails } from "@/lib/api";
-import { Main, MainUser, ThreadItemTypename } from "@/types/types";
-import { useParams } from "next/navigation";
-import Image from "next/image";
-import { getData } from "@/lib/getData";
-import { useEffect, useState } from "react";
-type Props = {};
-type useApi = {
-  data: Main;
-  isError: boolean;
-  isLoading: boolean;
-};
+import { getUserData } from "@/lib/api";
+import { Suspense } from "react";
+import ThreadsFeed from "@/app/containers/ThreadsFeed";
+import ProfileCard from "@/app/containers/ProfileCard";
 
 async function page({
   params: { username },
 }: {
   params: { username: string };
 }) {
-  //   const { data, isLoading, isError }: useApi =
-  //     getCompleteUserDetails("thevarunmayya");
-  //   const user = data && data.user;
+  const data = await getUserData(username);
 
-  //   if (isError) return "An error has occurred.";
-  //   if (isLoading) return "Loading...";
-  console.log(username);
-  const data = await getData(username);
   return (
-    <div>
-      <div>{data && data.biography}</div>
-      <div>{data && data.follower_count} follower_count</div>
-      <div>
-        {data && (
-          <Image
-            src={data.profile_pic_url}
-            width={100}
-            height={100}
-            alt="pfp"
-          />
-        )}
+    <div className="w-full ">
+      <div className="w-full max-w-7xl mx-auto">
+        <Suspense fallback={<div>Loading...</div>}>
+          {data && <ProfileCard data={data} />}
+        </Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
+          {data && <ThreadsFeed userID={data?.pk} username={username} />}
+        </Suspense>
       </div>
     </div>
   );

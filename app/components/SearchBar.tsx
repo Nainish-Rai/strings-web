@@ -1,9 +1,8 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { getData } from "@/lib/getData";
 import Link from "next/link";
-import { FormEvent, SyntheticEvent, useState } from "react";
+import { useState } from "react";
 
 type Props = {};
 
