@@ -1,8 +1,8 @@
-import { MainUser } from "@/types/types";
+import { ThreadsUser } from "@/types/types";
 import Image from "next/image";
 
 type Props = {
-  data: MainUser;
+  data: ThreadsUser;
 };
 
 function ProfileCard({ data }: Props) {
