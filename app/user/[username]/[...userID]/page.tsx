@@ -1,14 +1,21 @@
-import { getUserData } from "@/lib/api";
+import { getUserData, getUserDataWithID } from "@/lib/api";
 import { Suspense } from "react";
 import ThreadsFeed from "@/app/containers/ThreadsFeed";
 import ProfileCard from "@/app/containers/ProfileCard";
+import { ThreadsUser } from "@/types/types";
 
 async function page({
-  params: { username },
+  params: { username, userID },
 }: {
-  params: { username: string };
+  params: { username: string; userID: string | undefined };
 }) {
-  const data = await getUserData(username);
+  let data: ThreadsUser | undefined;
+  if (userID) {
+    data = await getUserDataWithID(username, userID);
+    console.log("from id");
+  } else {
+    data = await getUserData(username);
+  }
 
   return (
     <div className="w-full ">

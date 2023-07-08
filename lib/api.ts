@@ -12,6 +12,15 @@ export async function getUserData(username: string) {
 
   return userData;
 }
+export async function getUserDataWithID(username: string, userID: string) {
+  const userData = await threadsAPI.getUserProfile(username, userID);
+  // Recommendation: handle errors
+  if (!userData) {
+    throw new Error("Failed to fetch data");
+  }
+
+  return userData;
+}
 
 export async function getUserThreads(username: string, userID: string) {
   const threadsData = await threadsAPI.getUserProfileThreads(username, userID);

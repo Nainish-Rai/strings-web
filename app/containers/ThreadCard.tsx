@@ -7,7 +7,7 @@ type Props = {
 
 function ThreadCard({ data }: Props) {
   return (
-    <div>
+    <div className="my-16">
       {data.thread_items.map((item, index) => {
         return <PostCard data={item} key={index} />;
       })}
