@@ -1,5 +1,5 @@
 import { getUserThreads } from "@/lib/api";
-import { PostElement } from "@/types/types";
+import ThreadCard from "./ThreadCard";
 
 type Props = {
   userID: string;
@@ -8,7 +8,13 @@ type Props = {
 
 async function ThreadsFeed({ userID, username }: Props) {
   const data = await getUserThreads(username, userID);
-  return <div></div>;
+  return (
+    <div>
+      {data.map((item, index) => {
+        return <ThreadCard data={item} key={index} />;
+      })}
+    </div>
+  );
 }
 
 export default ThreadsFeed;
