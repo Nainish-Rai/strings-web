@@ -7,7 +7,7 @@ type Props = {
 
 function ProfileCard({ data }: Props) {
   return (
-    <div className="w-full flex items-center my-5 rounded-3xl justify-between border  p-6">
+    <div className="w-full max-w-5xl mx-auto flex items-center my-5  justify-between border-b  p-6">
       <div className="h-full flex flex-col">
         <h2 className=" text-6xl text-primary justify-self-start">
           {data.full_name}
