@@ -17,8 +17,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={inter.className}>
-        <nav className="w-full py-2 border-b  ">
+      <body className="h-screen">
+        <nav className="w-full  py-2 border-b  ">
           <div className="max-w-xs pl-12 w-full mx-auto">
             <div className="  gap-2 flex items-center text-3xl">
               <PiScribbleLoopBold size={30} className="" /> Strings

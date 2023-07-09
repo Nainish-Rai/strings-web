@@ -3,25 +3,35 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 type Props = {};
 
 function SearchBar({}: Props) {
+  const router = useRouter();
   const [searchTerm, setSearchTerm] = useState<string>("");
   return (
     <div>
-      <form className="flex w-full max-w-sm items-center space-x-2">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          searchTerm && router.push(`/user/${searchTerm}/a`);
+        }}
+        className="w-full max-w-xl py-16 flex-col p-12  flex gap-8 border rounded-lg "
+      >
+        <h3 className="text-xl text-center">Enter Your Username</h3>
         <Input
           type="text"
-          placeholder="ID"
+          placeholder="Username"
           value={searchTerm}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setSearchTerm(e.target.value)
           }
         />
-        <Link href={`/user/${searchTerm}/a`}>
-          <Button>GET</Button>
-        </Link>
+
+        <Button type="submit" className="w-full">
+          Get Profile
+        </Button>
       </form>
     </div>
   );
