@@ -7,18 +7,19 @@ function SimpleLine({}: Props) {
     <svg
       aria-hidden="true"
       fill="none"
-      height="200"
-      viewBox="0 0 21 200"
+      className="text-gray-400 py-2 pr-[2px] max-h-full"
+      viewBox="0 0 21 50"
       width="21"
-      className="h-full text-gray-400 w-auto"
+      height="95%"
+      preserveAspectRatio="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M18 1L18 53"
+        d="M18 1L18 290"
         stroke="currentColor"
         stroke-linecap="round"
         stroke-linejoin="round"
-        stroke-width="2"
+        stroke-width="1"
       ></path>
     </svg>
   );
