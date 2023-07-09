@@ -9,7 +9,7 @@ type Props = {
 async function ThreadsFeed({ userID, username }: Props) {
   const data = await getUserThreads(username, userID);
   return (
-    <div className="max-w-2xl mx-auto">
+    <div className="max-w-2xl w-full mx-auto">
       {data.map((item, index) => {
         return <ThreadCard data={item} key={index} />;
       })}

@@ -7,7 +7,7 @@ type Props = {
 
 function ThreadCard({ data }: Props) {
   return (
-    <div className="flex gap-4 flex-col border-y py-10">
+    <div className="flex gap-4 flex-col w-full border-y py-10">
       {data.thread_items.map((item, index) => {
         return <PostCard data={item} key={index} />;
       })}

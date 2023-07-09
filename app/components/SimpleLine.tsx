@@ -7,7 +7,7 @@ function SimpleLine({}: Props) {
     <svg
       aria-hidden="true"
       fill="none"
-      className="text-gray-400 py-2 pr-[2px] max-h-full"
+      className="text-gray-400 opacity-70 py-2 pr-[2px] max-h-full"
       viewBox="0 0 21 50"
       width="21"
       height="95%"

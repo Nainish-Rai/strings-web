@@ -40,6 +40,7 @@ function PostCard({ data }: Props) {
           </svg>{" "}
           {user.username} reposted
         </h3>
+
         <RepostedPost post={post.text_post_app_info.share_info.reposted_post} />
       </div>
     );
@@ -58,7 +59,7 @@ function PostCard({ data }: Props) {
             <h4 className="font-medium">{user.username}</h4>
           </Link>
         </div>
-        <div className="flex max-h-full">
+        <div className="flex w-full max-h-full">
           <div className="max-h-full ">
             {data.line_type == "squiggle" ? (
               <SwiggleLine />
@@ -78,12 +79,15 @@ function PostCard({ data }: Props) {
           <div>
             <div>
               {post.caption && (
-                <p className="text-gray-200 ml-5 -mt-1 text-sm my-1">
-                  {post.caption.text}
-                </p>
+                <Link href={`/thread/${data.post.pk}`}>
+                  <p className="text-gray-800  dark:text-gray-200  ml-5 -mt-1 text-sm my-1">
+                    {post.caption.text}
+                  </p>
+                </Link>
               )}
             </div>
-            <div className="mt-3 ml-6">
+
+            <div className="mt-3 ml-6 flex max-w-full">
               {/* for image posts */}
               {post.image_versions2.candidates.length != 0 &&
                 post.video_versions.length == 0 && (
@@ -92,7 +96,7 @@ function PostCard({ data }: Props) {
                     height={post.original_height}
                     width={post.original_width}
                     alt="img"
-                    className="w-full rounded-lg"
+                    className="w-full object-cover rounded-lg"
                   />
                 )}
               {/* For external links */}
@@ -141,13 +145,14 @@ function PostCard({ data }: Props) {
         <VideoPlayer url=""" />
       )} */}
             </div>
+
             <div className="flex ml-6 mt-4 gap-5">
               <PiHeartBold size={22} />
               <PiChatCircleBold size={22} />
               <PiRepeatBold size={22} />
               <PiPaperPlaneTiltBold size={22} />
             </div>
-            <div className=" ml-6 text-gray-200 mt-4 text-xs ">
+            <div className=" ml-6 text-gray-950 dark:text-gray-200 mt-4 text-xs ">
               {data.view_replies_cta_string} & {post.like_count} likes{" "}
             </div>
           </div>

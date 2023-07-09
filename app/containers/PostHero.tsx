@@ -1,41 +1,51 @@
-import { RepostedPost, ThreadsUser } from "@/types/types";
-import React from "react";
+import { ThreadItem } from "@/types/types";
+import {
+  PiHeartBold,
+  PiChatCircleBold,
+  PiPaperPlaneTiltBold,
+  PiRepeatBold,
+} from "react-icons/pi";
 import Image from "next/image";
 import Link from "next/link";
-import SimpleLine from "./SimpleLine";
+
+import QuotedPostCard from "../components/QuotedPostCard";
+
 type Props = {
-  post: RepostedPost | undefined;
+  data: ThreadItem;
 };
 
-function RepostedPost({ post }: Props) {
-  if (post != null) {
-    return (
-      <div className="flex  rounded-xl flex-col max-w-xl w-full">
-        <div className="flex gap-4">
+function PostHero({ data }: Props) {
+  const post = data.post;
+  const user = data.post.user;
+
+  return (
+    <div className="w-full flex items-center my-10">
+      <div className="flex flex-col w-full max-w-2xl mx-auto">
+        <div className="flex items-center gap-4">
           <Image
-            src={post.user.profile_pic_url}
-            className="aspect-square rounded-full w-8 h-8 "
+            src={user.profile_pic_url}
+            className="aspect-square rounded-full w-10 h-10 "
             width={30}
             height={30}
             alt="o"
           />
-          <Link href={`/user/${post.user.username}/${post.user.pk}`}>
-            <h4 className="font-medium">{post.user.username}</h4>
+          <Link href={`/user/${user.username}/${user.pk}`}>
+            <h4 className="font-medium">{user.username}</h4>
           </Link>
         </div>
         <div className="flex max-h-full">
-          <div className="max-h-full ">
-            <SimpleLine />
-          </div>
-          <div className="ml-6">
+          <div className="mt-5">
             <div>
               {post.caption && (
-                <p className="text-gray-900 dark:text-gray-200 ml-5 -mt-1 text-sm my-1">
-                  {post.caption.text}
-                </p>
+                <Link href={`/thread/${data.post.pk}`}>
+                  <p className="text-gray-800  dark:text-gray-200 -mt-1  my-1">
+                    {post.caption.text}
+                  </p>
+                </Link>
               )}
             </div>
-            <div className="mt-3 ml-6">
+
+            <div className="mt-3">
               {/* for image posts */}
               {post.image_versions2.candidates.length != 0 &&
                 post.video_versions.length == 0 && (
@@ -79,24 +89,35 @@ function RepostedPost({ post }: Props) {
                   </div>
                 </a>
               )}
-
+              {/* quoted post */}
+              {post.text_post_app_info.share_info &&
+                post.text_post_app_info.share_info.quoted_post != undefined && (
+                  <QuotedPostCard
+                    post={post.text_post_app_info.share_info.quoted_post}
+                  />
+                )}
               {/* {post.video_versions.length != 0 && (
-      <VideoPlayer url=""" />
-    )} */}
+          <VideoPlayer url=""" />
+        )} */}
               {/* {post.video_versions.length != 0 && (
-      <VideoPlayer url=""" />
-    )} */}
+          <VideoPlayer url=""" />
+        )} */}
             </div>
-            <div className=" ml-6 text-gray-900  dark:text-gray-200 mt-4 text-xs ">
-              {post.like_count} likes{" "}
+
+            <div className="flex  mt-4 gap-5">
+              <PiHeartBold size={22} />
+              <PiChatCircleBold size={22} />
+              <PiRepeatBold size={22} />
+              <PiPaperPlaneTiltBold size={22} />
+            </div>
+            <div className=" text-gray-950 dark:text-gray-200 mt-4 text-xs ">
+              {data.view_replies_cta_string} & {post.like_count} likes{" "}
             </div>
           </div>
         </div>
       </div>
-    );
-  } else {
-    return null;
-  }
+    </div>
+  );
 }
 
-export default RepostedPost;
+export default PostHero;

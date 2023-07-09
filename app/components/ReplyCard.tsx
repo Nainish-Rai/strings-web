@@ -1,16 +1,27 @@
-import { QuotedPost } from "@/types/types";
-import React from "react";
+import { ThreadItem } from "@/types/types";
+import {
+  PiHeartBold,
+  PiChatCircleBold,
+  PiPaperPlaneTiltBold,
+  PiRepeatBold,
+} from "react-icons/pi";
 import Image from "next/image";
 import Link from "next/link";
+import SwiggleLine from "./SwiggleLine";
+import SimpleLine from "./SimpleLine";
+import QuotedPostCard from "./QuotedPostCard";
+import RepostedPost from "./RepostedPost";
+import AvatarGroup from "./AvatarGroup";
 
 type Props = {
-  post: QuotedPost;
+  data: ThreadItem;
 };
 
-function QuotedPostCard({ post }: Props) {
-  const user = post.user;
+function ReplyCard({ data }: Props) {
+  const post = data.post;
+  const user = data.post.user;
   return (
-    <div className="flex border p-4 rounded-xl flex-col max-w-xl px-8 pr-16 w-full">
+    <div className="flex flex-col max-w-lg w-full">
       <div className="flex gap-4">
         <Image
           src={user.profile_pic_url}
@@ -19,21 +30,25 @@ function QuotedPostCard({ post }: Props) {
           height={30}
           alt="o"
         />
-        <Link href={`/user/${user.username}/a`}>
+        <Link href={`/user/${user.username}/${user.pk}`}>
           <h4 className="font-medium">{user.username}</h4>
         </Link>
       </div>
       <div className="flex max-h-full">
-        <div className="ml-6">
+        <div>
+          <SimpleLine />
+        </div>
+        <div>
           <div>
             {post.caption && (
-              <Link className="cursor-pointer" href={`/thread/${post.pk}`}>
-                <p className="text-gray-900 dark:text-gray-200 ml-5 -mt-1 text-sm my-1">
+              <Link href={`/thread/${data.post.pk}`}>
+                <p className="text-gray-800  dark:text-gray-200  ml-5 -mt-1 text-sm my-1">
                   {post.caption.text}
                 </p>
               </Link>
             )}
           </div>
+
           <div className="mt-3 ml-6">
             {/* for image posts */}
             {post.image_versions2.candidates.length != 0 &&
@@ -64,7 +79,7 @@ function QuotedPostCard({ post }: Props) {
                     className="w-full rounded-lg"
                   />
                   <div className=" p-2 px-4">
-                    <h5 className="text-gray-700 dark:text-gray-400 text-xs">
+                    <h5 className="text-gray-400 text-xs">
                       {
                         post.text_post_app_info.link_preview_attachment
                           .display_url
@@ -77,15 +92,28 @@ function QuotedPostCard({ post }: Props) {
                 </div>
               </a>
             )}
-
+            {/* quoted post */}
+            {post.text_post_app_info.share_info &&
+              post.text_post_app_info.share_info.quoted_post != undefined && (
+                <QuotedPostCard
+                  post={post.text_post_app_info.share_info.quoted_post}
+                />
+              )}
             {/* {post.video_versions.length != 0 && (
-      <VideoPlayer url=""" />
-    )} */}
+        <VideoPlayer url=""" />
+      )} */}
             {/* {post.video_versions.length != 0 && (
-      <VideoPlayer url=""" />
-    )} */}
+        <VideoPlayer url=""" />
+      )} */}
           </div>
-          <div className=" ml-6 text-gray-950 dark:text-gray-200 mt-4 text-xs ">
+
+          <div className="flex ml-6 mt-4 gap-5">
+            <PiHeartBold size={22} />
+            <PiChatCircleBold size={22} />
+            <PiRepeatBold size={22} />
+            <PiPaperPlaneTiltBold size={22} />
+          </div>
+          <div className=" ml-6 text-gray-950 dark:text-gray-400 mt-4 text-xs ">
             {post.like_count} likes{" "}
           </div>
         </div>
@@ -94,4 +122,4 @@ function QuotedPostCard({ post }: Props) {
   );
 }
 
-export default QuotedPostCard;
+export default ReplyCard;
