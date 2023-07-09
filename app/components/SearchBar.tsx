@@ -19,7 +19,7 @@ function SearchBar({}: Props) {
             setSearchTerm(e.target.value)
           }
         />
-        <Link href={`/user/${searchTerm}`}>
+        <Link href={`/user/${searchTerm}/a`}>
           <Button>GET</Button>
         </Link>
       </form>

@@ -2,15 +2,16 @@ import { getUserData, getUserDataWithID } from "@/lib/api";
 import { Suspense } from "react";
 import ThreadsFeed from "@/app/containers/ThreadsFeed";
 import ProfileCard from "@/app/containers/ProfileCard";
+import RepliesFeed from "@/app/containers/RepliesFeed";
 import { ThreadsUser } from "@/types/types";
 
 async function page({
   params: { username, userID },
 }: {
-  params: { username: string; userID: string | undefined };
+  params: { username: string; userID: string };
 }) {
   let data: ThreadsUser | undefined;
-  if (userID) {
+  if (userID != "a") {
     data = await getUserDataWithID(username, userID);
     console.log("from id");
   } else {
@@ -25,6 +26,9 @@ async function page({
         </Suspense>
         <Suspense fallback={<div>Loading...</div>}>
           {data && <ThreadsFeed userID={data?.pk} username={username} />}
+        </Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
+          {data && <RepliesFeed userID={data?.pk} username={username} />}
         </Suspense>
       </div>
     </div>
