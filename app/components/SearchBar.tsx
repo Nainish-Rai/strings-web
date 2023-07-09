@@ -1,7 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -17,7 +16,7 @@ function SearchBar({}: Props) {
           e.preventDefault();
           searchTerm && router.push(`/user/${searchTerm}/a`);
         }}
-        className="w-full max-w-xl py-16 flex-col p-12  flex gap-8 border rounded-lg "
+        className="w-full max-w-2xl py-16 flex-col p-12  flex gap-8 border rounded-lg "
       >
         <h3 className="text-xl text-center">Enter Your Username</h3>
         <Input
