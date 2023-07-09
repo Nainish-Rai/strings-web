@@ -4,6 +4,7 @@ import ThreadsFeed from "@/app/containers/ThreadsFeed";
 import ProfileCard from "@/app/containers/ProfileCard";
 import RepliesFeed from "@/app/containers/RepliesFeed";
 import { ThreadsUser } from "@/types/types";
+import Loader from "@/app/components/Loader";
 
 async function page({
   params: { username, userID },
@@ -21,13 +22,13 @@ async function page({
     return (
       <div className="w-full ">
         <div className="w-full max-w-7xl mx-auto">
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader />}>
             {data && <ProfileCard data={data} />}
           </Suspense>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader />}>
             {data && <ThreadsFeed userID={data?.pk} username={username} />}
           </Suspense>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader />}>
             {data && <RepliesFeed userID={data?.pk} username={username} />}
           </Suspense>
         </div>
