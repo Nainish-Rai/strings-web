@@ -6,11 +6,15 @@ String is a modern and innovative threads opensource frontend built with Next.js
 [Live Preview](https://strings.vercel.app)
 
 ## Screenshots
-![Uploading Screenshot 2023-07-10 003157.png…]()
-![Uploading Screenshot 2023-07-10 003207.png…]()
-![Screenshot (84)](https://github.com/Nainish-Rai/strings-web/assets/109546113/433bd2cb-c145-4dfe-a104-99e5229a038d)
-![Uploading Screenshot (85).png…]()
 
+
+![Screenshot (84)](https://github.com/Nainish-Rai/strings-web/assets/109546113/433bd2cb-c145-4dfe-a104-99e5229a038d)
+
+![Screenshot 2023-07-10 003207](https://github.com/Nainish-Rai/strings-web/assets/109546113/8999df01-24b6-4c82-905c-364ebb12a80a)
+
+![Screenshot (85)](https://github.com/Nainish-Rai/strings-web/assets/109546113/c698d449-a01e-462d-a1ca-e835047dbbc3)
+
+![Screenshot 2023-07-10 003157](https://github.com/Nainish-Rai/strings-web/assets/109546113/7662f410-f4d3-4e29-87c8-7e8bff4b9df2)
 
 
 ## Installation
