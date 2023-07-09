@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className="h-screen">
+      <body className="">
         <nav className="w-full  py-2 border-b  ">
           <div className="max-w-xs lg:pl-12 w-full mx-auto">
             <div>
