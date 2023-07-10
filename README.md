@@ -3,7 +3,7 @@
 
 String is a modern and innovative threads opensource frontend built with Next.js, Tailwind CSS, and the latest web development technologies. 
 
-[Live Preview](https://strings.vercel.app)
+[Live Preview](https://strings-web.vercel.app)
 
 ## Screenshots
 
