@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    unoptimized: true,
     domains: ["scontent.cdninstagram.com", "static.cdninstagram.com"],
     remotePatterns: [
       {
