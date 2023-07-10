@@ -2,7 +2,6 @@
 const nextConfig = {
   images: {
     unoptimized: true,
-    domains: ["scontent.cdninstagram.com", "static.cdninstagram.com"],
     remotePatterns: [
       {
         protocol: "https",

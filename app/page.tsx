@@ -1,6 +1,7 @@
 import Link from "next/link";
 import SearchBar from "./components/SearchBar";
 import accarray from "@/lib/homeacc";
+import Image from "next/image";
 
 export default function Home() {
   return (

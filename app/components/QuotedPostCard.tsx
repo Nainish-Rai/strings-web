@@ -17,6 +17,7 @@ function QuotedPostCard({ post }: Props) {
           className="aspect-square rounded-full w-8 h-8 "
           width={30}
           height={30}
+          crossOrigin="anonymous"
           alt="o"
         />
         <Link href={`/user/${user.username}/a`}>
@@ -43,6 +44,7 @@ function QuotedPostCard({ post }: Props) {
                   height={post.original_height}
                   width={post.original_width}
                   alt="img"
+                  crossOrigin="anonymous"
                   className="w-full rounded-lg"
                 />
               )}
@@ -61,6 +63,7 @@ function QuotedPostCard({ post }: Props) {
                     height={post.original_height}
                     width={post.original_width}
                     alt="img"
+                    crossOrigin="anonymous"
                     className="w-full rounded-lg"
                   />
                   <div className=" p-2 px-4">

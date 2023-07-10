@@ -16,6 +16,7 @@ function RepostedPost({ post }: Props) {
             src={post.user.profile_pic_url}
             className="aspect-square rounded-full w-8 h-8 "
             width={30}
+            crossOrigin="anonymous"
             height={30}
             alt="o"
           />
@@ -44,6 +45,7 @@ function RepostedPost({ post }: Props) {
                     height={post.original_height}
                     width={post.original_width}
                     alt="img"
+                    crossOrigin="anonymous"
                     className="w-full rounded-lg"
                   />
                 )}
@@ -61,6 +63,7 @@ function RepostedPost({ post }: Props) {
                           .image_url
                       }
                       height={post.original_height}
+                      crossOrigin="anonymous"
                       width={post.original_width}
                       alt="img"
                       className="w-full rounded-lg"

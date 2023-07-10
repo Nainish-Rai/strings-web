@@ -15,6 +15,7 @@ function AvatarGroup({ p1, p2, p3 }: Props) {
         src={p1}
         width={20}
         height={20}
+        crossOrigin="anonymous"
         alt=""
       />
       <Image
@@ -23,12 +24,14 @@ function AvatarGroup({ p1, p2, p3 }: Props) {
         width={20}
         height={20}
         alt=""
+        crossOrigin="anonymous"
       />
       <Image
         className="w-5 h-5 border-2 border-white rounded-full dark:border-gray-800 absolute bottom-2 left-4"
         src={p3}
         width={20}
         height={20}
+        crossOrigin="anonymous"
         alt=""
       />
     </div>

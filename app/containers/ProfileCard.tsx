@@ -26,6 +26,7 @@ function ProfileCard({ data }: Props) {
           className=" aspect-square w-64 rounded-2xl"
           height={640}
           width={640}
+          crossOrigin="anonymous"
           alt="pfp"
         />
       </div>

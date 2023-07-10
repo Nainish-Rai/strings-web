@@ -53,6 +53,7 @@ function PostCard({ data }: Props) {
             className="aspect-square rounded-full w-8 h-8 "
             width={30}
             height={30}
+            crossOrigin="anonymous"
             alt="o"
           />
           <Link href={`/user/${user.username}/${user.pk}`}>
@@ -96,6 +97,7 @@ function PostCard({ data }: Props) {
                     height={post.original_height}
                     width={post.original_width}
                     alt="img"
+                    crossOrigin="anonymous"
                     className="w-full object-cover rounded-lg"
                   />
                 )}
@@ -115,6 +117,7 @@ function PostCard({ data }: Props) {
                       height={post.original_height}
                       width={post.original_width}
                       alt="img"
+                      crossOrigin="anonymous"
                       className="w-full rounded-lg"
                     />
                     <div className=" p-2 px-4">

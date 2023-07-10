@@ -26,6 +26,7 @@ function PostHero({ data }: Props) {
             src={user.profile_pic_url}
             className="aspect-square rounded-full w-10 h-10 "
             width={30}
+            crossOrigin="anonymous"
             height={30}
             alt="o"
           />
@@ -55,6 +56,7 @@ function PostHero({ data }: Props) {
                     width={post.original_width}
                     alt="img"
                     className="w-full rounded-lg"
+                    crossOrigin="anonymous"
                   />
                 )}
               {/* For external links */}
@@ -71,6 +73,7 @@ function PostHero({ data }: Props) {
                           .image_url
                       }
                       height={post.original_height}
+                      crossOrigin="anonymous"
                       width={post.original_width}
                       alt="img"
                       className="w-full rounded-lg"
